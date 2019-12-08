@@ -1,0 +1,19 @@
+language: java
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.m2"
+deploy:
+  provider: releases
+  api_key:
+    secure: OkSf6bXnZxTKwgF3gVeMoJr+uuP3ZMJHEVsQp/dgcSSlOOxWWrZ+j9Fi+6/pa42NmYZVr/tQRQSDZq30bZHU86Q8v/s++Jy0QXgJtrNcCJ9nPF0511ZefxEmDUdAm/epNuUmyb8A66VMclkGHiERQi/e48KIB4GG+yO1MgY8ciF2jK7YBi0hEIdkUoDShUU+R6mQKFbGOawsLsO7azCpq5BsdNfzdTGA73lmmm5dwbeHLLT9l3aAVZa9IVTFys7m3+U1lcUm1RcQWGl5ATPluQ0W7KBYQ+LSd5FmKcGST9LO4pWLcMHylXXi3pX0Lty7AaFF7fJwW4BQ4jwrj41xQp6WRUfVgRSMMMMeq5Cd9nnZw1KpCNZvrwqPnESycV8ajOLLRyjidx+sUO7zNZRPzryO9pQL3xbWErDnX+SNN3L370TvnnmDW59Dr/B8ILWCdiIzYkjqUtbMtTkIRMJe+JWe5CNz1bvQH2lyIE1G5qrZUBJYPxxyNg9DOW+kJYVvmzas2wYXM1Yb1n0j2T1hjQbQyIDMWlIFPUpMBAdRu++etro88Ir62HGCDvd581PyurD7qmOrR39TJsyp+nA4pdj1J82BGOWPpVwzYlR4oXq+TKWHdOAAlXB0+htII4NBMPtJFZvVvI0vPBO9w5lZ+xvlFqYmcqvu/5sKcPg8oDE=
+  file_glob: build/libs/AutoPickup*.jar
+  skip_cleanup: true
+  on:
+    tags: true

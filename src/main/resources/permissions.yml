@@ -14,3 +14,6 @@ AutoSmelt.command
 
 AutoSell.enabled
 AutoSell.toggle
+
+FullNotify.enabled
+FullNotify.toggle
